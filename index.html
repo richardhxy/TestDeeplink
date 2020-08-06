@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .module{
+            width: 100%;
+            display: fixed;
+            border: 1px solid rgb(212, 212, 212);
+            background: #f5f5f5;
+            /* margin: 15px auto; */
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+        }
+        .title{
+            color: red;
+            font-size: 16px;
+            font-weight: 2px;
+            line-height: 30px;
+            height: 30px;
+            border: 1px  dashed;
+        }
+        .test div{
+            margin: 8px auto;
+        }
+        .more{
+            border: 1px dashed;
+            height: 20px;
+            line-height: 20px;
+            background: #faf4cb;
+        }
+        .more strong{
+            background: yellowgreen;
+        }
+        .more em{
+            background: #7ff561;
+        }
+        .more a{
+            background: #92f2f5;
+        }
+        .more span{
+            background: #f3a2a8;
+        }
+        .border{
+            border: 1px dashed;
+        }
+        html,body {
+            height:100%;
+            margin:0;
+        }
+        #content {
+            height: 100%;
+            background: no-repeat url("./landspace.jpg");
+            background-size: contain;
+        }
+    </style>
+    <script>
+        (function(para) {
+            var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+            w['sensorsDataAnalytic201505'] = n;
+            w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+            var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile','identify','login','logout','trackLink'];
+            for (var i = 0; i < ifs.length; i++) {
+                w[n][ifs[i]] = w[n].call(null, ifs[i]);
+            }
+            if (!w[n]._t) {
+                x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+                x.async = 1;
+                x.src = p;
+                w[n].para = para;
+                y.parentNode.insertBefore(x, y);
+            }
+        })({
+            // sdk_url: './sensorsdata-1437-2.full.js',
+            sdk_url: './sensorsdata-deeplink.full.js',
+            name: 'sensors',
+
+            heatmap_url:'./heatmap-1437-2.full.js',
+            server_url:'https://sachannledata.debugbox.sensorsdata.cn/sa?project=production',
+            app_js_bridge: {
+                white_list: ['https://sachannledata.debugbox.sensorsdata.cn/sa?project=production']
+            },
+            heatmap: {
+                //是否开启点击图，default 表示开启，自动采集 $WebClick 事件，可以设置 'not_collect' 表示关闭。
+                clickmap:'default',
+                //是否开启触达注意力图，not_collect 表示关闭，不会自动采集 $WebStay 事件，可以设置 'default' 表示开启。
+                scroll_notice_map:'default',
+
+
+            }
+        });
+        sensors.quick('autoTrack');
+        // window.addEventListener('click',function(target){
+        //     alert('click')
+        //     console.log(target)
+        //     console.log(target.target.tagName)
+        // })
+        // document.addEventListener('click',function(target){
+        //     alert('click')
+        //     console.log(target)
+        //     console.log(target.target.tagName)
+        // });
+
+        // setTimeout(function(){
+        //
+        //
+        //     sensors.events.on('send',function(data){
+        //         s1.innerHTML = String(Math.random());
+        //
+        //     })
+        //     sensors.events.isReady();
+        //
+        //
+        // },2000);
+        // 初始化深层链接插件
+        sensors.quick('useAppPlugin', {
+            deeplink: function(deeplink) {
+                deeplink.init({timeout: 2900});
+                document.getElementById('theBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    deeplink.openDeepLink();
+                });
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div id='content'>
+        <div class="module">
+            <p><a id="theBtn" href='http://www.baidu.com'>立即打开</a></p>
+        </div>
+    </div>
+
+
+</body>
+</html>
