@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<script type="text/javascript">
+    (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
+    ;r.type="text/javascript"
+    ;r.integrity="sha384-girahbTbYZ9tT03PWWj0mEVgyxtZoyDF9KVZdL+R53PP5wCY0PiVUKq0jeRlMx9M"
+    ;r.crossOrigin="anonymous";r.async=true
+    ;r.src="https://cdn.amplitude.com/libs/amplitude-7.2.1-min.gz.js"
+    ;r.onload=function(){if(!e.amplitude.runQueuedFunctions){
+    console.log("[Amplitude] Error: could not load SDK")}}
+    ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
+    ;function s(e,t){e.prototype[t]=function(){
+    this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+    var o=function(){this._q=[];return this}
+    ;var a=["add","append","clearAll","prepend","set","setOnce","unset"]
+    ;for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[]
+    ;return this}
+    ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
+    ;for(var p=0;p<l.length;p++){s(c,l[p])}n.Revenue=c
+    ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId", "enableTracking", "setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
+    ;function v(e){function t(t){e[t]=function(){
+    e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
+    for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
+    e=(!e||e.length===0?"$default_instance":e).toLowerCase()
+    ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
+    ;e.amplitude=n})(window,document);
+  
+    amplitude.getInstance().init("c4c9f02a0fbfe66ffb41dcc5869a896f");
+  </script>
+
+<head>
+
+    <!-- GrowingIO Analytics code version 2.1 -->
+    <!-- Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com -->
+
+    <script type='text/javascript'>
+    !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement("script"),tag=t.getElementsByTagName("script")[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,"script","assets.giocdn.com/2.1/gio.js","gio");
+      gio('init','8833b0c55127e5e8', {});
+    
+    //custom page code begin here
+    
+    //custom page code end here
+    
+    gio('send');
+    
+    </script>
+    
+    <!-- End GrowingIO Analytics code version: 2.1 -->
+    
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+
+	<script src="https://sensorsdata.cn/assets/lib/jquery_e0e26d1.js"></script>
+	<title>Demo</title>
+	<style>
+		a {
+			display: block;
+		}
+	</style>
+	<script>
+		
+  /*
+   *  base64.js
+   *
+   *  Licensed under the BSD 3-Clause License.
+   *    http://opensource.org/licenses/BSD-3-Clause
+   *
+   *  References:
+   *    http://en.wikipedia.org/wiki/Base64
+   */
+  ;(function (global, factory) {
+      typeof exports === 'object' && typeof module !== 'undefined'
+          ? module.exports = factory(global)
+          : typeof define === 'function' && define.amd
+          ? define(factory) : factory(global)
+  }((
+      typeof self !== 'undefined' ? self
+          : typeof window !== 'undefined' ? window
+          : typeof global !== 'undefined' ? global
+  : this
+  ), function(global) {
+      'use strict';
+      // existing version for noConflict()
+      var _Base64 = global.Base64;
+      var version = "2.4.9";
+      // if node.js and NOT React Native, we use Buffer
+      var buffer;
+      if (typeof module !== 'undefined' && module.exports) {
+          try {
+              buffer = eval("require('buffer').Buffer");
+          } catch (err) {
+              buffer = undefined;
+          }
+      }
+      // constants
+      var b64chars
+          = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+      var b64tab = function(bin) {
+          var t = {};
+          for (var i = 0, l = bin.length; i < l; i++) t[bin.charAt(i)] = i;
+          return t;
+      }(b64chars);
+      var fromCharCode = String.fromCharCode;
+      // encoder stuff
+      var cb_utob = function(c) {
+          if (c.length < 2) {
+              var cc = c.charCodeAt(0);
+              return cc < 0x80 ? c
+                  : cc < 0x800 ? (fromCharCode(0xc0 | (cc >>> 6))
+                                  + fromCharCode(0x80 | (cc & 0x3f)))
+                  : (fromCharCode(0xe0 | ((cc >>> 12) & 0x0f))
+                     + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
+                     + fromCharCode(0x80 | ( cc         & 0x3f)));
+          } else {
+              var cc = 0x10000
+                  + (c.charCodeAt(0) - 0xD800) * 0x400
+                  + (c.charCodeAt(1) - 0xDC00);
+              return (fromCharCode(0xf0 | ((cc >>> 18) & 0x07))
+                      + fromCharCode(0x80 | ((cc >>> 12) & 0x3f))
+                      + fromCharCode(0x80 | ((cc >>>  6) & 0x3f))
+                      + fromCharCode(0x80 | ( cc         & 0x3f)));
+          }
+      };
+      var re_utob = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
+      var utob = function(u) {
+          return u.replace(re_utob, cb_utob);
+      };
+      var cb_encode = function(ccc) {
+          var padlen = [0, 2, 1][ccc.length % 3],
+          ord = ccc.charCodeAt(0) << 16
+              | ((ccc.length > 1 ? ccc.charCodeAt(1) : 0) << 8)
+              | ((ccc.length > 2 ? ccc.charCodeAt(2) : 0)),
+          chars = [
+              b64chars.charAt( ord >>> 18),
+              b64chars.charAt((ord >>> 12) & 63),
+              padlen >= 2 ? '=' : b64chars.charAt((ord >>> 6) & 63),
+              padlen >= 1 ? '=' : b64chars.charAt(ord & 63)
+          ];
+          return chars.join('');
+      };
+      var btoa = global.btoa ? function(b) {
+          return global.btoa(b);
+      } : function(b) {
+          return b.replace(/[\s\S]{1,3}/g, cb_encode);
+      };
+      var _encode = buffer ?
+          buffer.from && Uint8Array && buffer.from !== Uint8Array.from
+          ? function (u) {
+              return (u.constructor === buffer.constructor ? u : buffer.from(u))
+                  .toString('base64')
+          }
+          :  function (u) {
+              return (u.constructor === buffer.constructor ? u : new  buffer(u))
+                  .toString('base64')
+          }
+          : function (u) { return btoa(utob(u)) }
+      ;
+      var encode = function(u, urisafe) {
+          return !urisafe
+              ? _encode(String(u))
+              : _encode(String(u)).replace(/[+\/]/g, function(m0) {
+                  return m0 == '+' ? '-' : '_';
+              }).replace(/=/g, '');
+      };
+      var encodeURI = function(u) { return encode(u, true) };
+      // decoder stuff
+      var re_btou = new RegExp([
+          '[\xC0-\xDF][\x80-\xBF]',
+          '[\xE0-\xEF][\x80-\xBF]{2}',
+          '[\xF0-\xF7][\x80-\xBF]{3}'
+      ].join('|'), 'g');
+      var cb_btou = function(cccc) {
+          switch(cccc.length) {
+          case 4:
+              var cp = ((0x07 & cccc.charCodeAt(0)) << 18)
+                  |    ((0x3f & cccc.charCodeAt(1)) << 12)
+                  |    ((0x3f & cccc.charCodeAt(2)) <<  6)
+                  |     (0x3f & cccc.charCodeAt(3)),
+              offset = cp - 0x10000;
+              return (fromCharCode((offset  >>> 10) + 0xD800)
+                      + fromCharCode((offset & 0x3FF) + 0xDC00));
+          case 3:
+              return fromCharCode(
+                  ((0x0f & cccc.charCodeAt(0)) << 12)
+                      | ((0x3f & cccc.charCodeAt(1)) << 6)
+                      |  (0x3f & cccc.charCodeAt(2))
+              );
+          default:
+              return  fromCharCode(
+                  ((0x1f & cccc.charCodeAt(0)) << 6)
+                      |  (0x3f & cccc.charCodeAt(1))
+              );
+          }
+      };
+      var btou = function(b) {
+          return b.replace(re_btou, cb_btou);
+      };
+      var cb_decode = function(cccc) {
+          var len = cccc.length,
+          padlen = len % 4,
+          n = (len > 0 ? b64tab[cccc.charAt(0)] << 18 : 0)
+              | (len > 1 ? b64tab[cccc.charAt(1)] << 12 : 0)
+              | (len > 2 ? b64tab[cccc.charAt(2)] <<  6 : 0)
+              | (len > 3 ? b64tab[cccc.charAt(3)]       : 0),
+          chars = [
+              fromCharCode( n >>> 16),
+              fromCharCode((n >>>  8) & 0xff),
+              fromCharCode( n         & 0xff)
+          ];
+          chars.length -= [0, 0, 2, 1][padlen];
+          return chars.join('');
+      };
+      var atob = global.atob ? function(a) {
+          return global.atob(a);
+      } : function(a){
+          return a.replace(/[\s\S]{1,4}/g, cb_decode);
+      };
+      var _decode = buffer ?
+          buffer.from && Uint8Array && buffer.from !== Uint8Array.from
+          ? function(a) {
+              return (a.constructor === buffer.constructor
+                      ? a : buffer.from(a, 'base64')).toString();
+          }
+          : function(a) {
+              return (a.constructor === buffer.constructor
+                      ? a : new buffer(a, 'base64')).toString();
+          }
+          : function(a) { return btou(atob(a)) };
+      var decode = function(a){
+          return _decode(
+              String(a).replace(/[-_]/g, function(m0) { return m0 == '-' ? '+' : '/' })
+                  .replace(/[^A-Za-z0-9\+\/]/g, '')
+          );
+      };
+      var noConflict = function() {
+          var Base64 = global.Base64;
+          global.Base64 = _Base64;
+          return Base64;
+      };
+      // export Base64
+      global.Base64 = {
+          VERSION: version,
+          atob: atob,
+          btoa: btoa,
+          fromBase64: decode,
+          toBase64: encode,
+          utob: utob,
+          encode: encode,
+          encodeURI: encodeURI,
+          btou: btou,
+          decode: decode,
+          noConflict: noConflict,
+          __buffer__: buffer
+      };
+      // if ES5 is available, make Base64.extendString() available
+      if (typeof Object.defineProperty === 'function') {
+          var noEnum = function(v){
+              return {value:v,enumerable:false,writable:true,configurable:true};
+          };
+          global.Base64.extendString = function () {
+              Object.defineProperty(
+                  String.prototype, 'fromBase64', noEnum(function () {
+                      return decode(this)
+                  }));
+              Object.defineProperty(
+                  String.prototype, 'toBase64', noEnum(function (urisafe) {
+                      return encode(this, urisafe)
+                  }));
+              Object.defineProperty(
+                  String.prototype, 'toBase64URI', noEnum(function () {
+                      return encode(this, true)
+                  }));
+          };
+      }
+      //
+      // export Base64 to the namespace
+      //
+      if (global['Meteor']) { // Meteor.js
+          Base64 = global.Base64;
+      }
+      // module.exports and AMD are mutually exclusive.
+      // module.exports has precedence.
+      if (typeof module !== 'undefined' && module.exports) {
+          module.exports.Base64 = global.Base64;
+      }
+      else if (typeof define === 'function' && define.amd) {
+          // AMD. Register as an anonymous module.
+          define([], function(){ return global.Base64 });
+      }
+      // that's it!
+      return {Base64: global.Base64}
+  }));
+	</script>
+</head>
+<body>
+    <script>
+        function buttonClick() {
+            sensors.track('buttonClick');
+            sensors.login('1111111');
+        }
+        function buttonClick1() {
+            sensors.quick('autoTrack');
+        }
+
+        function buttonAmplitude() {
+            amplitude.getInstance().logEvent('EVENT_NAME_HERE1111');
+        }
+    </script>
+    <button onclick=buttonClick()>测试</button>
+    <button onclick=buttonClick1()>测试2</button>
+    <button onclick=buttonAmplitude()>amplitude</button>
+
+
+
+	<script>
+(function(para) {
+  var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+  if(typeof(w['sensorsDataAnalytic201505']) !== 'undefined') {
+      return false;
+  }
+  w['sensorsDataAnalytic201505'] = n;
+  w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+  var ifs = ['track','quick','register','registerPage','registerOnce','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister'];
+  for (var i = 0; i < ifs.length; i++) {
+    w[n][ifs[i]] = w[n].call(null, ifs[i]);
+  }
+  if (!w[n]._t) {
+    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+    x.async = 1;
+    x.src = p;
+    w[n].para = para;
+    y.parentNode.insertBefore(x, y);
+  }
+})({
+  sdk_url: 'https://static.sensorsdata.cn/sdk/1.13.5/sensorsdata.min.js',
+  heatmap_url: 'https://static.sensorsdata.cn/sdk/1.13.4/heatmap.min.js',
+  name: 'sensors',
+  source_channel:['xxx','yyy'],
+  is_debug:{apph5:true},
+  use_app_track:true,
+  heatmap:{},
+  send_type:'ajax',
+  server_url: 'https://test-hechun.datasink.sensorsdata.cn/sa?project=huangxingya&token=d28b875ed9ac268f'
+});
+
+
+ function generateUrl(server_url,page_url,props){
+            var app_store_url = 'redirect_url=' + encodeURIComponent(page_url);     
+            // 匹配以sa结尾的或者sa?xx结尾的
+            var url = server_url.replace(/\/sa$/, '/track_installation').replace(/(\/sa)(\?[^\/]+)$/, '/track_installation$2');
+            if (url.indexOf('?') === -1) {
+                url = url + '?' + app_store_url + getIoschPara(props);
+            } else {
+                url = url + '&' + app_store_url + getIoschPara(props);
+            }
+            console.log(url);
+            return url;
+                
+            function getIoschPara(props) {       
+                var iosData = JSON.stringify({
+                    distinct_id: 'ios_channel_track_id',
+                    event:'$AppChannelMatching',
+                    properties: props,
+                    type: 'track_installation'  
+                });
+                if (typeof console === 'object' && console.log) {
+                    console.log(iosData);
+                }
+                return '&data=' + encodeURIComponent(Base64.encode(iosData));     
+            }
+            
+        }
+        generateUrl('http://test-syg.datasink.sensorsdata.cn/sa?token=27f1e21b78daf376&project=lixiang','https://cn.bing.com/?mkt=zh-CN',{"$sd_import_keys":"aaa,bbb,ccc","$utm_source": "测试","aaa": "23233","bbb": "222211","ccc": "2333211"})
+        //generateUrl('http://test-syg.datasink.sensorsdata.cn/sa?token=27f1e21b78daf376&project=lixiang','http://www.lixiang.com:8000/',{"$utm_source": "嗷嗷","aaa": "23233","ssddd": "222211"})
+
+
+sensors.quick('autoTrack');
+
+
+</script>
+
+<a id="open_header" href="https://wbs.zyebank.com/pweixin/weixin/htmls/share/appshare/index.html?ZYVue://LifeExpenseMain?module=LifeExpenses&utm_content=bmtest&utm_source=bmtest">打开LinkedME深度链接</a>
+
+<a id="open_header" href="http://10.120.46.111:8106/r/N">打开LinkedME深度链接111111111</a>
+
+
+
+<a id="open_header" href="https://ner.lkme.cc/WBE/mAzcTeBGP">打开LinkedME深度链接111111111</a>
+
+
+<ol>
+    <li>Coffee
+        <div>你猜</div>
+        <div>
+            <input type="text"></input>
+        </div>
+        <div>
+            <button onclick=''>
+                <span>submit</span>
+            </button>
+        </div>
+    </li>
+    <li>Tea
+        <div>你猜</div>
+        <img src="./PoweredByMacOSX.gif">
+    </li>
+    <li>Milk
+        <div>你猜</div>
+    </li>
+  </ol>
+  
+  <ul>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ul>
+
+  <ol>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ol>
+  
+  <ul>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ul>
+
+</body>
+</html>
